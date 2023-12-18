@@ -14,14 +14,15 @@
                         </div>
                         <div class="col-12 mt-4">
                             <form action="{{ route('gaji.store') }}" method="POST" enctype="multipart/form-data"">
-                              @csrf
+                                @csrf
                                 <div>
 
                                     <div class="form-group">
                                         <label>NIP</label>
                                         <select class="form-control" name="nip">
                                             @foreach ($user as $data)
-                                                <option value="{{ $data->nip }}">{{ $data->nip }}</option>
+                                                <option value="{{ $data->nip }}">{{ $data->nip }} -
+                                                    {{ $data->name }}</option>
                                             @endforeach
 
                                         </select>
@@ -35,13 +36,14 @@
                                         <input type="text" name="tunjangan_tetap" class="form-control" required="">
                                     </div>
                                     <div class="form-group">
-                                      <label>Tunjangan Transportasi</label>
-                                      <input type="text" name="tunjangan_transportasi	" class="form-control" required="">
-                                  </div>
-                                  <div class="form-group">
-                                    <label>Total </label>
-                                    <input type="text" name="total" class="form-control" required="">
-                                </div>
+                                        <label>Tunjangan Transportasi</label>
+                                        <input type="text" name="tunjangan_transportasi	" class="form-control"
+                                            required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total </label>
+                                        <input type="text" name="total" class="form-control" required="">
+                                    </div>
 
                                 </div>
                                 <div">

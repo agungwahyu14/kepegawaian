@@ -21,7 +21,6 @@
                           <tr>
                             <th>No</th>
                             <th>NIP</th>
-                            <th>Nama</th>
                             <th>Gaji Pokok</th>
                             <th>Tunjangan Tetap</th>
                             <th>Tunjangan Transportasi</th>

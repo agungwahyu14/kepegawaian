@@ -9,12 +9,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Gaji extends Model
 {
     use HasFactory;
-    protected $table ='gaji';
-    protected $guarded =['id'];
+    protected $table = 'gaji';
+    protected $fillable = [
+        'nip',
+        'gaji_pokok',
+        'tunjangan_tetap',
+        'tunjangan_transportasi',
+        'total',
 
-    public function user(){
-        return $this->belongsTo(User::class,'nip');
+    ];
+    protected $guarded = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'nip');
     }
-
-    
 }

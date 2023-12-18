@@ -38,13 +38,15 @@ class GajiController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'nip' => 'required:unique',
+            'nip' => 'required',
             'gaji_pokok' => 'required',
             'tunjangan_tetap' => 'required',
             'tunjangan_transportasi' => 'required',
-            'total' => 'required'
+            'total' => 'required',
         ]);
+
 
         Gaji::create([
             'nip' => $request->nip,

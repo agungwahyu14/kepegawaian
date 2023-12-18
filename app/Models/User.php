@@ -28,7 +28,10 @@ class User extends Authenticatable
         'umur'
     ];
 
-   
+    public function gaji() {
+        return $this->hasMany(Gaji::class);
+    }
+
 
     public $timestamps = false;
 
