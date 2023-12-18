@@ -13,9 +13,10 @@
                             <h3 class="text-white">Update Pegawai</h3>
                         </div>
                         <div class="col-12 mt-4">
-                            <form  method="POST" action="{{ route('pegawai.update', $user->nip)}}" enctype="multipart/form-data">
+                            <form  method="POST" action="{{ route('pegawai.update', $user->id)}}" enctype="multipart/form-data">
                               @csrf
                               @method('PUT')
+                                <input type="hidden" name="id" value="{{ $user->id }}">
                                 <div>
                                     <div class="form-group">
                                         <label>NIP</label>

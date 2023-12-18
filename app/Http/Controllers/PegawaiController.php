@@ -80,8 +80,7 @@ class PegawaiController extends Controller
      */
     public function edit(string $id)
     {   
-        $user = User::where('nip', $id)->first();
-        $user = User::findOrFail($id);
+        $user = User::where('id', $id)->first();
         return view('admin.pegawai.update', compact('user'), ["title" => "Admin"]);
     }
 
@@ -89,8 +88,8 @@ class PegawaiController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, User $user)
-    {
-        
+    {  
+       
         $request->validate([
             'nip' => 'required|unique:users,nip,' . ($request['id'] ?? '') . ',id',
             'password' => "required",
@@ -102,8 +101,9 @@ class PegawaiController extends Controller
             'umur' => "required",
         ]);
 
-
-        $user->update([
+        
+      
+        $user->where('id',$request->id)->update([
             'nip' => $request->input('nip'),
             'password' => $request->input('password') ? Hash::make($request->input('password')) : $user->password,
             'name' => $request->input('name'),
@@ -111,7 +111,7 @@ class PegawaiController extends Controller
             'telepon' => $request->input('telepon'),
             'gender' => $request->input('gender'),
             'role' => $request->input('role'),
-            'umur' => $request->input('umur'),
+            'umur' => $request->umur,
         ]);
 
         return redirect('/pegawai')->with('success', 'Pegawai has been edited');
