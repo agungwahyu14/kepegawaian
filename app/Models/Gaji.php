@@ -22,6 +22,6 @@ class Gaji extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'nip');
+        return $this->belongsTo(User::class, 'id');
     }
 }
