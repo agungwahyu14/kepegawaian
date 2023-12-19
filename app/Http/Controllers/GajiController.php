@@ -39,8 +39,10 @@ class GajiController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request);
+
         $request->validate([
-            'nip' => 'required',
+            'id_pegawai' => 'required',
             'gaji_pokok' => 'required',
             'tunjangan_tetap' => 'required',
             'tunjangan_transportasi' => 'required',
@@ -49,7 +51,7 @@ class GajiController extends Controller
 
 
         Gaji::create([
-            'nip' => $request->nip,
+            'id_pegawai' => $request->id_pegawai,
             'gaji_pokok' => $request->gaji_pokok,
             'tunjangan_tetap' => $request->tunjangan_tetap,
             'tunjangan_transportasi' => $request->tunjangan_transportasi,

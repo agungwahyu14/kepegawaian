@@ -10,15 +10,15 @@ class Gaji extends Model
 {
     use HasFactory;
     protected $table = 'gaji';
+    protected $guarded = ['id'];
     protected $fillable = [
-        'nip',
+        'id_pegawai',
         'gaji_pokok',
         'tunjangan_tetap',
         'tunjangan_transportasi',
         'total',
 
     ];
-    protected $guarded = ['id'];
 
     public function user()
     {

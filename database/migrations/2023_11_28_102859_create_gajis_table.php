@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('gaji', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip')->references('nip')->on('users');
+            $table->bigInteger('id_pegawai')->references('id')->on('users');
             $table->double('gaji_pokok');
             $table->double('tunjangan_tetap');
             $table->double('tunjangan_transportasi');

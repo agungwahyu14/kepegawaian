@@ -13,15 +13,15 @@
                             <h3 class="text-white">Create Gaji</h3>
                         </div>
                         <div class="col-12 mt-4">
-                            <form action="{{ route('gaji.store') }}" method="POST" enctype="multipart/form-data"">
+                            <form action="/gaji" method="POST" enctype="multipart/form-data"">
                                 @csrf
                                 <div>
 
                                     <div class="form-group">
                                         <label>NIP</label>
-                                        <select class="form-control" name="nip">
+                                        <select class="form-control" name="id_pegawai">
                                             @foreach ($user as $data)
-                                                <option value="{{ $data->nip }}">{{ $data->nip }} -
+                                                <option value="{{ $data->id }}">{{ $data->nip }} -
                                                     {{ $data->name }}</option>
                                             @endforeach
 
@@ -37,8 +37,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tunjangan Transportasi</label>
-                                        <input type="text" name="tunjangan_transportasi	" class="form-control"
-                                            required="">
+                                        <input type="text" name="tunjangan_transportasi" class="form-control"required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Total </label>
@@ -46,7 +45,7 @@
                                     </div>
 
                                 </div>
-                                <div">
+                                <div>
                                     <a href="/gaji" class="btn btn-danger mt-3 mb-3 text-white">Batal</a>
                                     <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
                         </div>
