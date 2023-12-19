@@ -15,7 +15,7 @@ class AbsensiController extends Controller
     {
         return view('admin.absen.index',
             [
-                // 'absensi' => Absensi::latest()->get(),
+                'absensi' => Absensi::latest()->get(),
                 "title" => "Admin"
             ]
         );
@@ -35,7 +35,24 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+
+        $request->validate([
+            'id_pegawai' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
+            
+        ]);
+
+
+        Absensi::create([
+            'id_pegawai' => $request->id_pegawai,
+            'tanggal' => $request->tanggal,
+            'keterangan' => $request->keterangan,
+            
+        ]);
+
+        return redirect('/absensi')->with('success', 'Absen has been added');
     }
 
     /**

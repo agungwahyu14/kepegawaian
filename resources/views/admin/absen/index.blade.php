@@ -21,25 +21,33 @@
                         <table class="table table-striped text-center">
                           <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
+                            <th>Pegawai ID</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
                             <th>Action</th>
                           </tr>
 
                           <?php $i = 1 ?>
-                          
+                          @foreach ($absensi as $data)
                           <tr class="p-0 text-center">
                             <td><?= $i ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#" class="btn btn-warning">Update</a> | <a href="#" class="btn btn-danger">Delete</a> </td>
+                            <td>{{ $data->id_pegawai }}</td>
+                            <td>{{ $data->tanggal }}</td>
+                            <td>{{ $data->keterangan }}</td>
+                            <td><a href="{{ route('absensi.update', $data->id) }}" class="btn btn-warning">Update</a> | 
+                              <form action="/absensi/{{$data->id }}" method="post" class="d-inline">
+                                  @method('DELETE')
+                                  @csrf
+                                  <button type="submit" id="btn-hapus" class="btn btn-danger" 
+                                    onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
+                                      >
+                                    <i class="fa-solid fa-trash"> Hapus</i>
+                                  </button>
+                                </form>
+                              </td>
                           </tr>
                           <?php $i++; ?>
-                           
+                          @endforeach
                         </table>
                       </div>
                     </div>

@@ -18,7 +18,7 @@
                                 <div>
 
                                     <div class="form-group">
-                                        <label>NIP</label>
+                                        <label>Pegawai ID</label>
                                         <select class="form-control" name="id_pegawai">
                                             @foreach ($user as $data)
                                                 <option value="{{ $data->id }}">{{ $data->nip }} -

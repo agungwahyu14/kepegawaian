@@ -20,27 +20,36 @@
                         <table class="table table-striped text-center">
                           <tr>
                             <th>No</th>
-                            <th>NIP</th>
+                            <th>Pegawai ID</th>
                             <th>Gaji Pokok</th>
                             <th>Tunjangan Tetap</th>
                             <th>Tunjangan Transportasi</th>
                             <th>Total</th>
+                            <th>Action</th>
                         
                           </tr>
 
                           <?php $i = 1 ?>
-                          
+                          @foreach ($gaji as $data)
                           <tr class="p-0 text-center">
                             <td><?= $i ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#" class="btn btn-warning">Update</a> | <a href="#" class="btn btn-danger">Delete</a> </td>
+                            <td>{{ $data->id_pegawai }}</td>
+                            <td>{{ $data->gaji_pokok }}</td>
+                            <td>{{ $data->tunjangan_tetap }}</td>
+                            <td>{{ $data->tunjangan_transportasi }}</td>
+                            <td>{{ $data->total }}</td>
+                            <td><form action="/gaji/{{$data->id }}" method="post" class="d-inline">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" id="btn-hapus" class="btn btn-danger" 
+                                onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
+                                  >
+                                <i class="fa-solid fa-trash"> Hapus</i>
+                              </button>
+                            </form></td>
                           </tr>
                           <?php $i++; ?>
-                      
+                          @endforeach
                         </table>
                       </div>
                     </div>

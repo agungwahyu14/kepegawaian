@@ -13,11 +13,9 @@ class GajiController extends Controller
      */
     public function index()
     {
-        return view(
-            'admin.gaji.index',
-
-            [ // ['gaji'=>gaji::latest()->get(),
-                "title" => "Admin"
+        return view('admin.gaji.index',
+            ['gaji'=>Gaji::latest()->get(),
+            "title" => "Admin"
             ]
         );
     }

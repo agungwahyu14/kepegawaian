@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip')->references('nip')->on('users');
+            $table->bigInteger('id_pegawai')->references('id')->on('users');
             $table->date('tanggal');
             $table->enum('keterangan', ['hadir', 'sakit', 'alpha','izin']);
             $table->timestamps();
