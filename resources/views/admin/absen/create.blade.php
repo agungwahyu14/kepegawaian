@@ -13,7 +13,7 @@
                             <h3 class="text-white">Create Absen</h3>
                         </div>
                         <div class="col-12 mt-4">
-                            <form action="{{ route('absensi.store') }}" method="POST" enctype="multipart/form-data"">
+                            <form action="/absensi" method="POST" enctype="multipart/form-data"">
                               @csrf
                               <div>
 
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Keterangan</label>
-                                    <select class="form-control" name="gender">
+                                    <select class="form-control" name="keterangan">
                                         <option>========</option>
                                         <option value="hadir">Hadir</option>
                                         <option value="sakit">Sakit</option>

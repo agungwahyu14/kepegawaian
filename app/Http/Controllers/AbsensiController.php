@@ -35,8 +35,7 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
+    
         $request->validate([
             'id_pegawai' => 'required',
             'tanggal' => 'required',
@@ -47,7 +46,7 @@ class AbsensiController extends Controller
 
         Absensi::create([
             'id_pegawai' => $request->id_pegawai,
-            'tanggal' => Carbon::now($request->tanggal)->format('Y-m-d'),
+            'tanggal' => $request->tanggal,
             'keterangan' => $request->keterangan,
             
         ]);
