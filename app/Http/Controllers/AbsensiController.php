@@ -67,15 +67,32 @@ class AbsensiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::latest()->get();
+        $absensi = Absensi::where('id', $id)->first();
+        return view('admin.absen.update', compact('absensi','user'), ["title" => "Admin"]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Absensi $absensi)
     {
-        //
+        $request->validate([
+            'id_pegawai' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        
+      
+        $absensi->where('id',$request->id)->update([
+            'id_pegawai' => $request->id_pegawai,
+            'tanggal' => $request->tanggal,
+            'keterangan' => $request->keterangan,
+            
+        ]);
+
+        return redirect('/absensi')->with('success', 'Absen has been edited');
     }
 
     /**
@@ -83,6 +100,8 @@ class AbsensiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $absensi = Absensi::where('id', $id)->first();
+        $absensi->delete();
+        return redirect('/absensi')->with('danger', 'Pegawai has been delete');  
     }
 }

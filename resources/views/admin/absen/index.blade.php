@@ -34,8 +34,8 @@
                             <td>{{ $data->id_pegawai }}</td>
                             <td>{{ $data->tanggal }}</td>
                             <td>{{ $data->keterangan }}</td>
-                            <td><a href="{{ route('absensi.update', $data->id) }}" class="btn btn-warning">Update</a> | 
-                              <form action="/absensi/{{$data->id }}" method="post" class="d-inline">
+                            <td><a href="{{ route('absensi.edit', $data->id) }}" class="btn btn-warning">Update</a> | 
+                              <form action="/absensi/{{$data->id}}" method="post" class="d-inline">
                                   @method('DELETE')
                                   @csrf
                                   <button type="submit" id="btn-hapus" class="btn btn-danger" 
