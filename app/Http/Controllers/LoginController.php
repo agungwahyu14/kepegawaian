@@ -29,7 +29,7 @@ class LoginController extends Controller
             if(auth()->user()->role=='admin'){
                 return redirect('/admin');
             }
-            return redirect('/pegawai');
+            return redirect('/pegawai_home');
         }
  
         return back()->with('loginError', 'Login failed');

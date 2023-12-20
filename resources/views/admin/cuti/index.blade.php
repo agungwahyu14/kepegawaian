@@ -21,8 +21,7 @@
                         <table class="table table-striped text-center">
                           <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
+                            <th>Pegawai ID</th>
                             <th>Tanggal</th>
                             <th>Keterangan</th>
                             <th>Action</th>
@@ -32,7 +31,6 @@
                           
                           <tr class="p-0 text-center">
                             <td><?= $i ?></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

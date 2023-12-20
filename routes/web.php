@@ -54,6 +54,34 @@ Route::resource('/feedback',FeedbackController::class);
 Route::resource('/cuti',CutiController::class);
 
 
+// Pegawai
+Route::get('/pegawai_home', function () {
+    return view('pegawai.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+Route::get('/pegawai_absen', function () {
+    return view('pegawai.absen.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+Route::get('/pegawai_cuti', function () {
+    return view('pegawai.cuti.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+Route::get('/pegawai_feedback', function () {
+    return view('pegawai.feedback.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+Route::get('/pegawai_gaji', function () {
+    return view('pegawai.gaji.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+
+
 
 
 

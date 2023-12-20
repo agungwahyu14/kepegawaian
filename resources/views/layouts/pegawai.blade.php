@@ -7,18 +7,18 @@
     <title>{{ $title }} </title>
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="assets/modules/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="assets/modules/summernote/summernote-bs4.css">
-    <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/modules/jqvmap/dist/jqvmap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css') }}">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -47,23 +47,31 @@
                                     class="fas fa-search"></i></a></li>
                     </ul>
 
+                    <div class="search-element">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                        <div class="search-backdrop"></div>
+                      </div>
+
                 </form>
                 <ul class="navbar-nav navbar-right">
 
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
 
-                            <a href="features-profile.html" class="dropdown-item has-icon">
+                            <a href="/profile" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
                             </a>
-
-                            <a href="#" class="dropdown-item has-icon text-danger">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                            <button class="dropdown-item has-icon text-danger" type="submit" >
+                                Logout
+                            </button>
+                        </form>
                         </div>
                     </li>
                 </ul>
@@ -80,18 +88,16 @@
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
                         <li class="dropdown">
-                            <a href="/" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
-                            <a href="/pegawai" class="nav-link"><i class="fas fa-users"></i><span>Pegawai</span></a>
+                            <a href="/pegawai_home" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Data</li>
                         <li class="dropdown">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-table"></i><span>Data</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="index.html">Absensi</a></li>
-                                <li><a class="nav-link" href="index-0.html">Gaji</a></li>
-                                <li><a class="nav-link" href="index.html">Feedback</a></li>
-                                <li><a class="nav-link" href="index.html">Cuti</a></li>
+                                <li><a class="nav-link" href="/pegawai_absen">Absensi</a></li>
+                                <li><a class="nav-link" href="/pegawai_gaji">Gaji</a></li>
+                                
                             </ul>
                         </li>
                         <li class="menu-header">Laporan</li>
@@ -99,21 +105,19 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-columns"></i> <span>Laporan</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="index.html">Absensi</a></li>
-                                <li><a class="nav-link" href="index-0.html">Gaji</a></li>
-                                <li><a class="nav-link" href="index.html">Feedback</a></li>
-                                <li><a class="nav-link" href="index.html">Cuti</a></li>
+                                <li><a class="nav-link" href="/pegawai_feedback">Feedback</a></li>
+                                <li><a class="nav-link" href="/pegawai_cuti">Cuti</a></li>
                             </ul>
                     </ul>
-                    </li>
-
-
+                    </li>    
             </div>
+            
+            
 
 
             <!-- Main Content -->
             <div class="container-fluid">
-                @yield('content')
+                @yield('content_pegawai')
             </div>
 
 
@@ -121,27 +125,28 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="assets/modules/jquery.min.js"></script>
-    <script src="assets/modules/popper.js"></script>
-    <script src="assets/modules/tooltip.js"></script>
-    <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="assets/modules/moment.min.js"></script>
-    <script src="assets/js/stisla.js"></script>
+    <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
-    <script src="assets/modules/jquery.sparkline.min.js"></script>
-    <script src="assets/modules/chart.min.js"></script>
-    <script src="assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
-    <script src="assets/modules/summernote/summernote-bs4.js"></script>
-    <script src="assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
-
+    <script src="{{ asset('assets/modules/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/owlcarousel2/dist/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/summernote/summernote-bs4.js') }}"></script>
+    <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
     <!-- Page Specific JS File -->
-    <script src="assets/js/page/index.js"></script>
+    <script src="{{ asset('assets/js/page/index.js') }}"></script>
+    <script src="{{ asset('assets/js/page/modules-sweetalert.js') }}"></script>
 
     <!-- Template JS File -->
-    <script src="assets/js/scripts.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.jss') }}"></script>
 </body>
 
 </html>

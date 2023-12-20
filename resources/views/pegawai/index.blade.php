@@ -1,4 +1,5 @@
 @extends('layouts.pegawai')
-@section('content')
+@section('content_pegawai')
+
 
 @endsection
