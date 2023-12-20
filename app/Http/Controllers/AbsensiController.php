@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
@@ -47,7 +47,7 @@ class AbsensiController extends Controller
 
         Absensi::create([
             'id_pegawai' => $request->id_pegawai,
-            'tanggal' => $request->tanggal,
+            'tanggal' => Carbon::now($request->tanggal)->format('Y-m-d'),
             'keterangan' => $request->keterangan,
             
         ]);

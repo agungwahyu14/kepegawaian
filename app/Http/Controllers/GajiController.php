@@ -89,6 +89,8 @@ class GajiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $gaji = Gaji::where('id', $id)->first();
+        $gaji->delete();
+        return redirect('/gaji')->with('danger', 'Gaji has been delete');
     }
 }
