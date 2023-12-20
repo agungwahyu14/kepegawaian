@@ -1,14 +1,17 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CutiController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PegawaiCutiController;
+use App\Http\Controllers\PegawaiGajiController;
+use App\Http\Controllers\PegawaiAbsenController;
+use App\Http\Controllers\PegawaiFeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,26 +63,20 @@ Route::get('/pegawai_home', function () {
         "title"=>"Pegawai"
     ]);
 });
-Route::get('/pegawai_absen', function () {
-    return view('pegawai.absen.index',[
-        "title"=>"Pegawai"
-    ]);
-});
-Route::get('/pegawai_cuti', function () {
-    return view('pegawai.cuti.index',[
-        "title"=>"Pegawai"
-    ]);
-});
-Route::get('/pegawai_feedback', function () {
-    return view('pegawai.feedback.index',[
-        "title"=>"Pegawai"
-    ]);
-});
-Route::get('/pegawai_gaji', function () {
-    return view('pegawai.gaji.index',[
-        "title"=>"Pegawai"
-    ]);
-});
+
+
+//Absensi
+Route::get('/pegawai_absen', [PegawaiAbsenController::class, 'index']);
+
+// Cuti
+Route::get('/pegawai_cuti', [PegawaiCutiController::class, 'index']);
+
+// Feeback
+Route::get('/pegawai_feedback', [PegawaiFeedbackController::class, 'index']);
+
+// Gaji
+Route::get('/pegawai_gaji', [PegawaiGajiController::class, 'index']);
+
 
 
 

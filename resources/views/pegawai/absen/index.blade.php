@@ -19,13 +19,13 @@
 
                           <div class="form-group">
                               <label>Pegawai ID</label>
-                              <select class="form-control" name="id_pegawai">
+                              {{-- <select class="form-control" name="id_pegawai">
                                   @foreach ($user as $data)
                                       <option value="{{ $data->id }}">{{ $data->nip }} -
                                           {{ $data->name }}</option>
                                   @endforeach
 
-                              </select>
+                              </select> --}}
                           </div>
                           <div class="form-group">
                               <label>Tanggal</label>
