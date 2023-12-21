@@ -13,7 +13,7 @@
                         <h3 class="text-white">Create Absen</h3>
                     </div>
                     <div class="col-12 mt-4">
-                        <form action="/absensi" method="POST" enctype="multipart/form-data"">
+                        <form action="/pegawai_absen" method="POST" enctype="multipart/form-data"">
                           @csrf
                           <div>
 

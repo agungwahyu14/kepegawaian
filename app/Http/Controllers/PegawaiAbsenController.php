@@ -1,23 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
 
 class PegawaiAbsenController extends Controller
 {
-    //
-    
+
     public function index()
     {
-        $user = User::latest()->get();
-        return view('pegawai.absen.index',compact(['user']),
+        return view('pegawai.absen.index',
             [
+                'absensi' => Absensi::latest()->get(),
                 "title" => "Pegawai"
             ]
         );
+    }
+    
+    public function create()
+    {
+        $user = User::latest()->get();
+        return view('pegawai.absen.index', compact(['user']), [
+        "title" => "Pegawai"
+    ]);
     }
 
     /**
@@ -25,8 +31,7 @@ class PegawaiAbsenController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-
+    
         $request->validate([
             'id_pegawai' => 'required',
             'tanggal' => 'required',
@@ -37,11 +42,11 @@ class PegawaiAbsenController extends Controller
 
         Absensi::create([
             'id_pegawai' => $request->id_pegawai,
-            'tanggal' => Carbon::now($request->tanggal)->format('Y-m-d'),
+            'tanggal' => $request->tanggal,
             'keterangan' => $request->keterangan,
             
         ]);
 
-        return redirect('/pegawai_absen')->with('success', 'Absen has been added');
+        return redirect('/pegawai_home')->with('success', 'Absen has been added');
     }
 }
