@@ -13,7 +13,7 @@
                         <h3 class="text-white">Create Feedback</h3>
                     </div>
                     <div class="col-12 mt-4">
-                        <form action="{{ route('feedback.store') }}" method="POST" enctype="multipart/form-data"">
+                        <form action="/feedback" method="POST" enctype="multipart/form-data"">
                           @csrf
                           <div>
 
