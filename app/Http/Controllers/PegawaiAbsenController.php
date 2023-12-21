@@ -10,21 +10,16 @@ class PegawaiAbsenController extends Controller
 
     public function index()
     {
-        return view('pegawai.absen.index',
+        $user = User::latest()->get();
+        return view('pegawai.absen.index', compact(['user']),
             [
+                
                 'absensi' => Absensi::latest()->get(),
                 "title" => "Pegawai"
             ]
         );
     }
     
-    public function create()
-    {
-        $user = User::latest()->get();
-        return view('pegawai.absen.index', compact(['user']), [
-        "title" => "Pegawai"
-    ]);
-    }
 
     /**
      * Store a newly created resource in storage.
