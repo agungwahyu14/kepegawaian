@@ -68,11 +68,7 @@ Route::get('/pegawai_home', function () {
 //Absensi
 Route::get('/pegawai_absen', [PegawaiAbsenController::class, 'index']);
 
-// Cuti
-Route::get('/pegawai_cuti', [PegawaiCutiController::class, 'index']);
 
-// Feeback
-Route::get('/pegawai_feedback', [PegawaiFeedbackController::class, 'index']);
 
 // Gaji
 Route::get('/pegawai_gaji', [PegawaiGajiController::class, 'index']);

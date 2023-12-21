@@ -105,8 +105,8 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-columns"></i> <span>Laporan</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="/pegawai_feedback">Feedback</a></li>
-                                <li><a class="nav-link" href="/pegawai_cuti">Cuti</a></li>
+                                <li><a class="nav-link" href="{{ route('feedback.create') }}">Feedback</a></li>
+                                <li><a class="nav-link" href="{{ route('cuti.create') }}">Cuti</a></li>
                             </ul>
                     </ul>
                     </li>    

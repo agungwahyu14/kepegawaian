@@ -15,7 +15,7 @@ class FeedbackController extends Controller
     {
         return view('admin.feedback.index',
             [
-                // 'absensi' => Absensi::latest()->get(),
+                'feedback' => Feedback::latest()->get(),
                 "title" => "Admin"
             ]
         );
@@ -25,8 +25,8 @@ class FeedbackController extends Controller
     public function create()
     {
         $user = User::latest()->get();
-        return view('admin.feedback.create', compact(['user']), [
-        "title" => "Admin"
+        return view('pegawai.feedback.index', compact(['user']), [
+        "title" => "Pegawai"
     ]);
     }
 
@@ -36,6 +36,20 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'id_pegawai' => 'required',
+            'keterangan' => 'required',
+            
+        ]);
+
+
+        Feedback::create([
+            'id_pegawai' => $request->id_pegawai,
+            'keterangan' => $request->keterangan,
+            
+        ]);
+
+        return redirect('/pegawai_home')->with('success', 'Feedback has been added');
     }
 
     /**
@@ -68,5 +82,8 @@ class FeedbackController extends Controller
     public function destroy(string $id)
     {
         //
+        $feedback = Feedback::where('id', $id)->first();
+        $feedback->delete();
+        return redirect('/feedback')->with('danger', 'Feedback has been delete');  
     }
 }

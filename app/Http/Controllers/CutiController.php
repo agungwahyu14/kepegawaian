@@ -15,7 +15,7 @@ class CutiController extends Controller
     {
         return view('admin.cuti.index',
             [
-                // 'absensi' => Absensi::latest()->get(),
+                'cuti' => Cuti::latest()->get(),
                 "title" => "Admin"
             ]
         );
@@ -25,8 +25,8 @@ class CutiController extends Controller
     public function create()
     {
         $user = User::latest()->get();
-        return view('admin.cuti.create', compact(['user']), [
-        "title" => "Admin"
+        return view('pegawai.cuti.index', compact(['user']), [
+        "title" => "Pegawai"
     ]);
     }
 
@@ -36,6 +36,22 @@ class CutiController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'id_pegawai' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
+            
+        ]);
+
+
+        Cuti::create([
+            'id_pegawai' => $request->id_pegawai,
+            'tanggal' => $request->tanggal,
+            'keterangan' => $request->keterangan,
+            
+        ]);
+
+        return redirect('/pegawai_home')->with('success', 'Cuti has been added');
     }
 
     /**
@@ -68,5 +84,8 @@ class CutiController extends Controller
     public function destroy(string $id)
     {
         //
+        $cuti = Cuti::where('id', $id)->first();
+        $cuti->delete();
+        return redirect('/feedback')->with('danger', 'Feedback has been delete');  
     }
 }

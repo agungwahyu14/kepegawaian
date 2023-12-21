@@ -12,7 +12,7 @@ class PegawaiGajiController extends Controller
     public function index()
     {
         $user = User::latest()->get();
-        return view('pegawai.absen.index', compact(['user']),
+        return view('pegawai.gaji.index', compact(['user']),
             [
                 "title" => "Pegawai"
             ]

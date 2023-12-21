@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Cuti extends Model
 {
     use HasFactory;
+    protected $table="cuti";
+    protected $guarded=['id'];
+    protected $fillable = [
+        'id_pegawai',
+        'tanggal',
+        'keterangan',
+
+    ];
+
+
+    public function user(){
+        return $this->belongsTo(User::class,'id');
+    }
 }

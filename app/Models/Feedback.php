@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Feedback extends Model
 {
     use HasFactory;
+    protected $table="feedback";
+    protected $guarded=['id'];
+    protected $fillable = [
+        'id_pegawai',
+        'feedback',
+
+    ];
+
+
+    public function user(){
+        return $this->belongsTo(User::class,'id');
+    }
 }

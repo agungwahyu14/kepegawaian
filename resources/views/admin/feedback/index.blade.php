@@ -12,8 +12,7 @@
                       <h3 class="text-white">Tabel Feedback</h3>
                       
                     </div>
-                    <div>
-                      <a href="{{ route('feedback.create') }}" class="btn btn-lg ml-4 mb-2 mt-2 btn-success">[+] Create</a>  
+                    <div> 
                     </div>
                     <div class="card-body p-0">
                       <div class="table-responsive">
@@ -21,23 +20,29 @@
                         <table class="table table-striped text-center">
                           <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
+                            <th>Pegawai ID</th>
                             <th>Feedback</th>
                             <th>Action</th>
                           </tr>
 
                           <?php $i = 1 ?>
-                          
+                          @foreach ($feedback as $data)
                           <tr class="p-0 text-center">
                             <td><?= $i ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="#" class="btn btn-warning">Update</a> | <a href="#" class="btn btn-danger">Delete</a> </td>
+                            <td>{{ $data->id_pegawai }}</td>
+                            <td>{{ $data->feedback }}</td>
+                            <td><form action="/feedback/{{$data->id}}" method="post" class="d-inline">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" id="btn-hapus" class="btn btn-danger" 
+                                onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
+                                  >
+                                <i class="fa-solid fa-trash"> Hapus</i>
+                              </button>
+                            </form></td>
                           </tr>
                           <?php $i++; ?>
-                           
+                          @endforeach
                         </table>
                       </div>
                     </div>

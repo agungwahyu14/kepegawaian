@@ -34,7 +34,15 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a href="#" class="btn btn-warning">Update</a> | <a href="#" class="btn btn-danger">Delete</a> </td>
+                            <td><form action="/cuti/{{$data->id}}" method="post" class="d-inline">
+                              @method('DELETE')
+                              @csrf
+                              <button type="submit" id="btn-hapus" class="btn btn-danger" 
+                                onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
+                                  >
+                                <i class="fa-solid fa-trash"> Hapus</i>
+                              </button>
+                            </form></td>
                           </tr>
                           <?php $i++; ?>
                            

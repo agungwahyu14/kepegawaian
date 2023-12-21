@@ -36,6 +36,12 @@ class User extends Authenticatable
     public function absensi() {
         return $this->hasMany(Absensi::class);
     }
+    public function cuti() {
+        return $this->hasMany(Cuti::class);
+    }
+    public function feedback() {
+        return $this->hasMany(Feedback::class);
+    }
 
 
     public $timestamps = false;

@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip')->references('nip')->on('users');
-            $table->string('name');
+            $table->bigInteger('id_pegawai')->references('id')->on('users');
             $table->string('feedback');
             $table->timestamp('created_at')->nullable();
         });
