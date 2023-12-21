@@ -36,16 +36,17 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         //
+ 
         $request->validate([
             'id_pegawai' => 'required',
-            'keterangan' => 'required',
+            'feedback' => 'required',
             
         ]);
 
 
         Feedback::create([
             'id_pegawai' => $request->id_pegawai,
-            'keterangan' => $request->keterangan,
+            'feedback' => $request->feedback,
             
         ]);
 
