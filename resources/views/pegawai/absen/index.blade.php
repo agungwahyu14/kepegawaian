@@ -14,8 +14,8 @@
                     </div>
                     <div class="col-12 mt-4">
                         <form action="/pegawai_absen" method="POST" enctype="multipart/form-data"">
-                          @csrf
-                          <div>
+                        @csrf
+                        <div>
 
                             <div class="form-group">
                                 <label>Pegawai ID</label>
