@@ -5,43 +5,52 @@
 
             <div class="row mt-5">
 
-                <div class="col-12 col-md-6 col-lg-6">
-
+                <div class="col-12">
 
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <h3 class="text-white">Create Gaji</h3>
+                            <h3 class="text-white">Tabel Gaji</h3>
+
                         </div>
-                        <div class="col-12 mt-4">
-                            <form action="/gaji" method="POST" enctype="multipart/form-data"">
-                                @csrf
-                                <div>
+                        
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-striped text-center">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Pegawai ID</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Tunjangan Tetap</th>
+                                        <th>Tunjangan Transportasi</th>
+                                        <th>Total</th>
+                                        <th>Action</th>
 
-                                    <div class="form-group">
-                                        <label>Pegawai ID</label>
-                                        <select class="form-control" name="id_pegawai">
-                                            @foreach ($user as $data)
-                                                <option value="{{ $data->id }}">{{ $data->nip }} -
-                                                    {{ $data->name }}</option>
-                                            @endforeach
+                                    </tr>
 
-                                        </select>
-                                    </div>
-                                    
-
-                                </div>
-                                <div>
-                                    
-                                    <button type="submit" class="btn btn-primary mt-3 mb-3">Cetak</button>
+                                    <?php $i = 1; ?>
+                                    @foreach ($gaji as $data)
+                                        <tr class="p-0 text-center">
+                                            <td><?= $i ?></td>
+                                            <td>{{ $data->id_pegawai }}</td>
+                                            <td>{{ $data->gaji_pokok }}</td>
+                                            <td>{{ $data->tunjangan_tetap }}</td>
+                                            <td>{{ $data->tunjangan_transportasi }}</td>
+                                            <td>{{ $data->total }}</td>
+                                            <td>
+                                                <a class="btn btn-primary" type="submit" id="button-addon2"
+                                                    href="/pegawai/gaji/slipgajipegawaipdf/{{ $data->id }}">
+                                                    <i class="fa-solid fa-print"></i> Cetak
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    @endforeach
+                                </table>
+                            </div>
                         </div>
-                        </form>
-
                     </div>
-
-
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 @endsection

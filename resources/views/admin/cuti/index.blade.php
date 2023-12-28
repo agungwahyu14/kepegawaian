@@ -28,12 +28,12 @@
                           </tr>
 
                           <?php $i = 1 ?>
-                          
+                          @foreach ($cuti as $data) 
                           <tr class="p-0 text-center">
                             <td><?= $i ?></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $data->id_pegawai}}</td>
+                            <td>{{ $data->tanggal}}</td>
+                            <td>{{ $data->keterangan}}</td>
                             <td><form action="/cuti/{{$data->id}}" method="post" class="d-inline">
                               @method('DELETE')
                               @csrf
@@ -45,7 +45,7 @@
                             </form></td>
                           </tr>
                           <?php $i++; ?>
-                           
+                          @endforeach
                         </table>
                       </div>
                     </div>

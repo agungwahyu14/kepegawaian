@@ -4,48 +4,82 @@ namespace App\Http\Controllers;
 
 use App\Models\Gaji;
 use App\Models\User;
+use PDF;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PegawaiGajiController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $user = User::latest()->get();
-        return view('pegawai.gaji.index', compact(['user']),
+        //
+        $id_pegawai = auth()->user()->id;
+        $gaji = Gaji::where('id_pegawai', $id_pegawai)->get();
+        return view('pegawai.gaji.index', compact(['gaji']),
             [
                 "title" => "Pegawai"
             ]
         );
     }
 
-    
+    public function slipgajipegawaipdf(Request $request){        
+        $gaji = Gaji::where('id',$request->id)->first();
+        $user = User::where('id',$gaji->id)->get();
+        
+
+         $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);
+         return $pdf->download('laporan-slip-gaji-pegawai.pdf');
+         
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // dd($request);
+        //
+       
+    }
 
-        $request->validate([
-            'id_pegawai' => 'required',
-            'gaji_pokok' => 'required',
-            'tunjangan_tetap' => 'required',
-            'tunjangan_transportasi' => 'required',
-            'total' => 'required',
-        ]);
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
 
-        Gaji::create([
-            'id_pegawai' => $request->id_pegawai,
-            'gaji_pokok' => $request->gaji_pokok,
-            'tunjangan_tetap' => $request->tunjangan_tetap,
-            'tunjangan_transportasi' => $request->tunjangan_transportasi,
-            'total' => $request->total,
-        ]);
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
-
-        return redirect('/pegawai_gaji')->with('success', 'Absen has been added');
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

@@ -86,6 +86,6 @@ class CutiController extends Controller
         //
         $cuti = Cuti::where('id', $id)->first();
         $cuti->delete();
-        return redirect('/feedback')->with('danger', 'Feedback has been delete');  
+        return redirect('/cuti')->with('danger', 'Feedback has been delete');  
     }
 }
