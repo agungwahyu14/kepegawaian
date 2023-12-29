@@ -25,9 +25,10 @@ class PegawaiGajiController extends Controller
         );
     }
 
-    public function slipgajipegawaipdf(Request $request){        
+    public function slipgajipegawaipdf(Request $request){      
+        
         $gaji = Gaji::where('id',$request->id)->first();
-        $user = User::where('id',$gaji->id)->get();
+        $user = User::where('id',$gaji->id_pegawai)->get();
         
 
          $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);

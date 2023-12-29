@@ -20,11 +20,7 @@
                             <div class="form-group">
                                 <label>Pegawai ID</label>
                                 <select class="form-control" name="id_pegawai">
-                                    @foreach ($user as $data)
-                                        <option value="{{ $data->id }}">{{ $data->nip }} -
-                                            {{ $data->name }}</option>
-                                    @endforeach
-
+                                        <option value="{{auth()->user()->id}}">{{auth()->user()->name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">

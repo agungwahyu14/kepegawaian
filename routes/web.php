@@ -67,11 +67,13 @@ Route::get('/pegawai_home', function () {
 
 //Absensi
 Route::get('/pegawai_absen', [PegawaiAbsenController::class, 'index']);
+Route::post('/pegawai_absen', [PegawaiAbsenController::class, 'store']);
 
 
 
 // Gaji
 Route::get('/pegawai_gaji', [PegawaiGajiController::class, 'index']);
+Route::get('/pegawai/gaji/slipgajipegawaipdf/{id}', [PegawaiGajiController::class, 'slipgajipegawaipdf']);
 
 
 
