@@ -48,17 +48,19 @@
                     </ul>
 
                     <div class="search-element">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search"
+                            data-width="250">
                         <button class="btn" type="submit"><i class="fas fa-search"></i></button>
                         <div class="search-backdrop"></div>
-                      </div>
+                    </div>
 
                 </form>
                 <ul class="navbar-nav navbar-right">
 
                     <li class="dropdown"><a href="#" data-toggle="dropdown"
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+                            <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}"
+                                class="rounded-circle mr-1">
                             <div class="d-sm-none d-lg-inline-block">Hi, </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -68,10 +70,10 @@
                             </a>
                             <form action="/logout" method="POST">
                                 @csrf
-                            <button class="dropdown-item has-icon text-danger" type="submit" >
-                                Logout
-                            </button>
-                        </form>
+                                    <button class="dropdown-item has-icon text-danger" type="submit">
+                                        Logout
+                                    </button>
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -88,7 +90,8 @@
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
                         <li class="dropdown">
-                            <a href="/pegawai_home" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                            <a href="/pegawai_home" class="nav-link"><i
+                                    class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Data</li>
                         <li class="dropdown">
@@ -97,7 +100,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="/pegawai_absen">Absensi</a></li>
                                 <li><a class="nav-link" href="/pegawai_gaji">Gaji</a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="menu-header">Laporan</li>
@@ -109,10 +112,10 @@
                                 <li><a class="nav-link" href="{{ route('cuti.create') }}">Cuti</a></li>
                             </ul>
                     </ul>
-                    </li>    
+                    </li>
             </div>
-            
-            
+
+
 
 
             <!-- Main Content -->

@@ -51,7 +51,7 @@ class CutiController extends Controller
             
         ]);
 
-        return redirect('/pegawai_home')->with('success', 'Cuti has been added');
+        return redirect('/pegawai_cuti')->with('success', 'Cuti has been added');
     }
 
     /**
@@ -86,6 +86,6 @@ class CutiController extends Controller
         //
         $cuti = Cuti::where('id', $id)->first();
         $cuti->delete();
-        return redirect('/cuti')->with('danger', 'Feedback has been delete');  
+        return redirect('/cuti')->with('danger', 'Cuti has been delete');  
     }
 }

@@ -24,7 +24,7 @@ use App\Http\Controllers\PegawaiFeedbackController;
 |
 */
 
-
+// Landing Page
 Route::get('/',function(){
     return view('landing-page.index',[
     "title"=>"Sistem Informasi Kepegawaian"
@@ -60,6 +60,20 @@ Route::resource('/cuti',CutiController::class);
 // Pegawai
 Route::get('/pegawai_home', function () {
     return view('pegawai.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+
+// Cuti
+Route::get('/pegawai_cuti', function () {
+    return view('pegawai.cuti.index',[
+        "title"=>"Pegawai"
+    ]);
+});
+
+// Feedback
+Route::get('/pegawai_feedback', function () {
+    return view('pegawai.feedback.index',[
         "title"=>"Pegawai"
     ]);
 });

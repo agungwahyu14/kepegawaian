@@ -6,7 +6,12 @@
             <div class="row mt-5">
                 
                 <div class="col-12">
-
+                  @if (Session::has('success'))
+                        <p class=" alert alert-success">{{ Session::get('success') }}</p>
+                    @endif
+                    @if (Session::has('danger'))
+                        <p class=" alert alert-danger">{{ Session::get('danger') }}</p>
+                    @endif
                   <div class="card">
                     <div class="card-header bg-primary">
                       <h3 class="text-white">Tabel Absensi</h3>

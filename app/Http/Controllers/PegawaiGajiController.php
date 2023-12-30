@@ -34,6 +34,7 @@ class PegawaiGajiController extends Controller
          $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);
          return $pdf->download('laporan-slip-gaji-pegawai.pdf');
          
+         
     }
     /**
      * Show the form for creating a new resource.

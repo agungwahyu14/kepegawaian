@@ -50,7 +50,7 @@ class FeedbackController extends Controller
             
         ]);
 
-        return redirect('/pegawai_home')->with('success', 'Feedback has been added');
+        return redirect('/pegawai_feedback')->with('success', 'Feedback has been added');
     }
 
     /**

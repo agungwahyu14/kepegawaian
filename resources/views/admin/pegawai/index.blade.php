@@ -7,7 +7,12 @@
 
                 <div class="col-12">
 
-
+                    @if (Session::has('success'))
+                        <p class=" alert alert-success">{{ Session::get('success') }}</p>
+                    @endif
+                    @if (Session::has('danger'))
+                        <p class=" alert alert-danger">{{ Session::get('danger') }}</p>
+                    @endif
                     <div class="card">
                         <div class="card-header bg-primary">
                             <h3 class="text-white">Tabel Pegawai</h3>
@@ -15,7 +20,10 @@
                         </div>
                         <div>
 
-                            <a href="{{ route('pegawai.create') }}" class="btn btn-lg ml-4 mb-2 mt-2 btn-success">[+] Create</a>
+                            <a href="{{ route('pegawai.create') }}" class="btn btn-lg ml-4 mb-2 mt-2 btn-success">[+]
+                                Create</a>
+
+
 
                         </div>
                         <div class="card-body p-0">
@@ -42,17 +50,18 @@
                                             <td>{{ $data->telepon }}</td>
                                             <td>{{ $data->gender }}</td>
                                             <td>{{ $data->umur }}</td>
-                                            <td><a href="{{ route('pegawai.edit', $data->id) }}" class="btn btn-warning">Update</a> | 
-                                                <form action="/pegawai/{{$data->id }}" method="post" class="d-inline">
+                                            <td><a href="{{ route('pegawai.edit', $data->id) }}"
+                                                    class="btn btn-warning">Update</a> |
+                                                <form action="/pegawai/{{ $data->id }}" method="post"
+                                                    class="d-inline">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" id="btn-hapus" class="btn btn-danger" 
-                                                      onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
-                                                        >
-                                                      <i class="fa-solid fa-trash"> Hapus</i>
+                                                    <button type="submit" id="btn-hapus" class="btn btn-danger"
+                                                        onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')">
+                                                        <i class="fa-solid fa-trash"> Hapus</i>
                                                     </button>
-                                                  </form>
-                                                </td>
+                                                </form>
+                                            </td>
                                         </tr>
                                         <?php $i++; ?>
                                     @endforeach

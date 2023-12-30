@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use PDF;
-use App\Models\Absen;
-use App\Models\Pegawai;
-use App\Models\DataGaji;
+use App\Models\Absensi;
+use App\Models\User;
+use App\Models\Gaji;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -21,20 +21,19 @@ class LaporanController extends Controller
 
 
     public function slipgajipegawai(){
-        $pegawai = Pegawai::latest()->get();
-        return view('laporan.slipGajiPegawai',compact(['pegawai']));
+        $user = User::latest()->get();
+        return view('laporan.slipGajiPegawai',compact(['user']));
     }
     
     public function slipgajipegawaipdf(Request $request){
 
-        $periode = $request->tahun.'-'.$request->bulan;
-        $gaji = DataGaji::where('nip',$request->nip)->where('periode',$periode)->get();
-        $pegawai = Pegawai::where('nip',$request->nip)->get();
+        $gaji = Gaji::where('id',$request->id)->get();
+        $user = User::where('id',$request->id_pegawai)->get();
 
         if(count($gaji)===0){
             return redirect('/laporan/slipgajipegawai')->with('danger', 'Data Tidak Ada!');
         }else{
-            $pdf = PDF::loadview('laporan.slipGajiPegawaiPdf',['gaji'=>$gaji,'pegawai'=>$pegawai]);
+            $pdf = PDF::loadview('laporan.slipGajiPegawaiPdf',['gaji'=>$gaji,'pegawai'=>$user]);
             return $pdf->download('laporan-slip-gaji-pegawai.pdf');
          }
          
@@ -43,7 +42,7 @@ class LaporanController extends Controller
     public function gajipegawaipdf(Request $request){
 
         $periode = $request->tahun.'-'.$request->bulan;
-        $gaji = DataGaji::where('periode',$periode)->get();
+        $gaji = Gaji::where('periode',$periode)->get();
 
         if(count($gaji)===0){
             return redirect('/laporan/gajipegawai')->with('danger', 'Data Tidak Ada!');
@@ -56,7 +55,7 @@ class LaporanController extends Controller
     public function absensipegawaipdf(Request $request){
 
         $periode = $request->tahun.'-'.$request->bulan;
-        $absen = Absen::where('periode',$periode)->get();
+        $absen = Absensi::where('periode',$periode)->get();
 
         if(count($absen)===0){
             return redirect('/laporan/absensipegawai')->with('danger', 'Data Tidak Ada!');

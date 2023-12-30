@@ -95,6 +95,18 @@ class AbsensiController extends Controller
         return redirect('/absensi')->with('success', 'Absen has been edited');
     }
 
+    // public function slipgajiabsensipdf(Request $request){      
+        
+    //     $gaji = Gaji::where('id',$request->id)->first();
+    //     $user = User::where('id',$gaji->id_pegawai)->get();
+        
+
+    //      $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);
+    //      return $pdf->download('laporan-slip-gaji-pegawai.pdf');
+         
+         
+    // }
+
     /**
      * Remove the specified resource from storage.
      */

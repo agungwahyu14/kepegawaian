@@ -6,6 +6,9 @@
             <div class="row mt-5">
 
                 <div class="col-12 col-md-6 col-lg-6">
+                    @if (Session::has('success'))
+                        <p class=" alert alert-success">{{ Session::get('success') }}</p>
+                    @endif
 
 
                     <div class="card">
@@ -20,11 +23,7 @@
                                     <div class="form-group">
                                         <label>Pegawai ID</label>
                                         <select class="form-control" name="id_pegawai">
-                                            @foreach ($user as $data)
-                                                <option value="{{ $data->id }}">{{ $data->nip }} -
-                                                    {{ $data->name }}</option>
-                                            @endforeach
-
+                                            <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
                                         </select>
                                     </div>
                                     <div class="form-group">

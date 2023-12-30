@@ -6,13 +6,12 @@
             <div class="row mt-5">
 
                 <div class="col-12">
-
                     <div class="card">
                         <div class="card-header bg-primary">
                             <h3 class="text-white">Tabel Gaji</h3>
 
                         </div>
-                        
+
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-striped text-center">

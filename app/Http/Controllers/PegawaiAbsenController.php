@@ -52,7 +52,7 @@ class PegawaiAbsenController extends Controller
             
         ]);
 
-        return redirect('/pegawai_home')->with('success', 'Absen has been added');
+        return redirect('/pegawai_absen')->with('success', 'Absen has been added');
     }
 
     /**
