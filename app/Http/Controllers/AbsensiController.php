@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
 use App\Models\Absensi;
 use Illuminate\Http\Request;
@@ -84,7 +84,6 @@ class AbsensiController extends Controller
         ]);
 
         
-      
         $absensi->where('id',$request->id)->update([
             'id_pegawai' => $request->id_pegawai,
             'tanggal' => $request->tanggal,
@@ -95,17 +94,15 @@ class AbsensiController extends Controller
         return redirect('/absensi')->with('success', 'Absen has been edited');
     }
 
-    // public function slipgajiabsensipdf(Request $request){      
+    public function slipabsensipdf(Request $request){      
         
-    //     $gaji = Gaji::where('id',$request->id)->first();
-    //     $user = User::where('id',$gaji->id_pegawai)->get();
+        $absensi = Absensi::where('id',$request->id)->first();
+        $user = User::where('id',$absensi->id_pegawai)->get();
         
 
-    //      $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);
-    //      return $pdf->download('laporan-slip-gaji-pegawai.pdf');
-         
-         
-    // }
+        $pdf = PDF::loadview('pegawai.absen.slipGajiPdf',['absen'=>$absensi,'user'=>$user]);
+        return $pdf->download('laporan-slip-absen-pegawai.pdf'); 
+    }
 
     /**
      * Remove the specified resource from storage.

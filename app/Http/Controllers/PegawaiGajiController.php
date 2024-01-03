@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gaji;
 use App\Models\User;
-use PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,23 +18,27 @@ class PegawaiGajiController extends Controller
         //
         $id_pegawai = auth()->user()->id;
         $gaji = Gaji::where('id_pegawai', $id_pegawai)->get();
-        return view('pegawai.gaji.index', compact(['gaji']),
+        return view(
+            'pegawai.gaji.index',
+            compact(['gaji']),
             [
                 "title" => "Pegawai"
             ]
         );
     }
 
-    public function slipgajipegawaipdf(Request $request){      
-        
-        $gaji = Gaji::where('id',$request->id)->first();
-        $user = User::where('id',$gaji->id_pegawai)->get();
-        
+    public function slipgajipegawaipdf(Request $request)
+    {
 
-         $pdf = PDF::loadview('pegawai.gaji.slipGajiPdf',['gaji'=>$gaji,'user'=>$user]);
-         return $pdf->download('laporan-slip-gaji-pegawai.pdf');
-         
-         
+        $gaji = Gaji::where('id', $request->id)->first();
+        $user = User::where('id', $gaji->id_pegawai)->get();
+
+
+
+
+
+        $pdf = Pdf::loadView('pegawai.gaji.slipGajiPdf', ['gaji' => $gaji, 'user' => $user]);
+        return $pdf->download('laporan-slip-gaji-pegawai.pdf');
     }
     /**
      * Show the form for creating a new resource.
@@ -50,7 +54,6 @@ class PegawaiGajiController extends Controller
     public function store(Request $request)
     {
         //
-       
     }
 
     /**
