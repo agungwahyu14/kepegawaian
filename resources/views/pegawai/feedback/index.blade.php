@@ -28,8 +28,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Feedback</label>
-                                        <textarea class="form-control" name="feedback" placeholder="Leave a comment here" id="floatingTextarea2"
-                                            style="height: 200px"></textarea>
+                                        <textarea class="form-control " name="feedback"></textarea>
                                     </div>
 
 

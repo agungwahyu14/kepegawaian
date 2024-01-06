@@ -33,7 +33,7 @@
                             <th>Action</th>
                         
                           </tr>
-
+                          @if ($gaji->count())
                           <?php $i = 1 ?>
                           @foreach ($gaji as $data)
                           <tr class="p-0 text-center">
@@ -49,12 +49,21 @@
                               <button type="submit" id="btn-hapus" class="btn btn-danger" 
                                 onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')"
                                   >
-                                <i class="fa-solid fa-trash"> Hapus</i>
+                                <i class="fa-solid fa-trash"></i>
                               </button>
                             </form></td>
                           </tr>
                           <?php $i++; ?>
                           @endforeach
+                          @else
+                          <tr>
+                              <td colspan="9" class=" bg-secondary text-dark">
+                                  <div class="d-flex justify-content-center">
+                                      Data not available
+                                  </div>
+                              </td>
+                          </tr>
+                      @endif
                         </table>
                       </div>
                     </div>

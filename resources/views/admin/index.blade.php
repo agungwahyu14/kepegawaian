@@ -16,7 +16,7 @@
                                 <h4>Total Pegawai</h4>
                             </div>
                             <div class="card-body">
-                                59
+                                {{ $pegawai }}
                             </div>
                         </div> 
                     </div>         
@@ -34,7 +34,7 @@
                                 <h4>Total Absensi</h4>
                             </div>
                             <div class="card-body">
-                                59
+                                {{ $absensi }}
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                               <h4>Total Gaji</h4>
                           </div>
                           <div class="card-body">
-                              59
+                              {{ $gaji }}
                           </div>
                       </div>
                   </div>
@@ -75,7 +75,7 @@
                                 <h4>Total Cuti</h4>
                             </div>
                             <div class="card-body">
-                                59
+                                {{ $cuti }}
                             </div>
                         </div>
                     </div>

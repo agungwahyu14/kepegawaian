@@ -39,33 +39,42 @@
                                         <th>Umur</th>
                                         <th>Action</th>
                                     </tr>
-
-                                    <?php $i = 1; ?>
-                                    @foreach ($user as $data)
-                                        <tr class="p-0 text-center">
-                                            <td><?= $i ?></td>
-                                            <td>{{ $data->nip }}</td>
-                                            <td>{{ $data->name }}</td>
-                                            <td>{{ $data->email }}</td>
-                                            <td>{{ $data->telepon }}</td>
-                                            <td>{{ $data->gender }}</td>
-                                            <td>{{ $data->umur }}</td>
-                                            <td><a href="{{ route('pegawai.edit', $data->id) }}"
-                                                    class="btn btn-warning">Update</a> |
-                                                <form action="/pegawai/{{ $data->id }}" method="post"
-                                                    class="d-inline">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button type="submit" id="btn-hapus" class="btn btn-danger"
-                                                        onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')">
-                                                        <i class="fa-solid fa-trash"> Hapus</i>
-                                                    </button>
-                                                </form>
+                                    @if ($user->count())
+                                        <?php $i = 1; ?>
+                                        @foreach ($user as $data)
+                                            <tr class="p-0 text-center">
+                                                <td><?= $i ?></td>
+                                                <td>{{ $data->nip }}</td>
+                                                <td>{{ $data->name }}</td>
+                                                <td>{{ $data->email }}</td>
+                                                <td>{{ $data->telepon }}</td>
+                                                <td>{{ $data->gender }}</td>
+                                                <td>{{ $data->umur }}</td>
+                                                <td><a href="{{ route('pegawai.edit', $data->id) }}"
+                                                        class="btn btn-warning"><i
+                                                            class="fa-solid fa-pen-to-square"></i></a> |
+                                                    <form action="/pegawai/{{ $data->id }}" method="post"
+                                                        class="d-inline">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" id="btn-hapus" class="btn btn-danger"
+                                                            onclick="return confirm('Apakah Kamu Yakin Ingin Menghapus data?')">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <?php $i++; ?>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="9" class=" bg-secondary text-dark">
+                                                <div class="d-flex justify-content-center">
+                                                    Data not available
+                                                </div>
                                             </td>
                                         </tr>
-                                        <?php $i++; ?>
-                                    @endforeach
-
+                                    @endif
 
                                 </table>
                             </div>

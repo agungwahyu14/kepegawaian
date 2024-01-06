@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CutiController;
 use App\Http\Controllers\GajiController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\PegawaiController;
@@ -38,11 +39,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 // Admin
-Route::get('/admin', function () {
-    return view('admin.index',[
-        "title"=>"Admin"
-    ]);
-});
+
+Route::get('/admin', [AdminController::class, 'index']);
+
 
 Route::get('/profile', function () {
     return view('admin.profile.index',[
@@ -52,9 +51,11 @@ Route::get('/profile', function () {
 
 Route::resource('/pegawai',PegawaiController::class);
 Route::resource('/absensi',AbsensiController::class);
+Route::get('/cetakabsensi','AbsensiController@cetakAbsensipdf')->name('cetakabsensipdf');
 Route::resource('/gaji',GajiController::class);
 Route::resource('/feedback',FeedbackController::class);
 Route::resource('/cuti',CutiController::class);
+
 
 
 // Pegawai

@@ -25,13 +25,6 @@
 		<h6>Absensi Pegawai</h6>
 	</center>
 	<hr>
-	
-	<div class="d-flex gap-0">
-		@foreach($user as $data)
-		<p>Nama Pegawai : <span>{{$data->name}}</span></p>
-		<p>Pegawai Id : <span>{{$data->id_pegawai}}</span></p>
-		@endforeach
-	</div>
  
 	<table class="table table-striped table-bordered">
 		<thead>

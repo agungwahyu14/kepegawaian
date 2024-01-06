@@ -21,6 +21,15 @@ class AbsensiController extends Controller
         );
     }
 
+    public function cetakAbsensipdf(){      
+        
+        $absensi = Absensi::latest()->get();
+        $user = User::latest()->get();
+        
+        $pdf = PDF::loadview('admin.absen.cetakAbsensiPdf',['absen'=>$absensi,'user'=>$user]);
+        return $pdf->download('laporan-cetak-absen-pegawai.pdf'); 
+    }
+
     
     public function create()
     {
@@ -94,15 +103,7 @@ class AbsensiController extends Controller
         return redirect('/absensi')->with('success', 'Absen has been edited');
     }
 
-    public function slipabsensipdf(Request $request){      
-        
-        $absensi = Absensi::where('id',$request->id)->first();
-        $user = User::where('id',$absensi->id_pegawai)->get();
-        
 
-        $pdf = PDF::loadview('pegawai.absen.slipGajiPdf',['absen'=>$absensi,'user'=>$user]);
-        return $pdf->download('laporan-slip-absen-pegawai.pdf'); 
-    }
 
     /**
      * Remove the specified resource from storage.

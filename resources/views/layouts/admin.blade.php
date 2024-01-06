@@ -9,7 +9,7 @@
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
-
+    <link href="{{ url('template') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/modules/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote-bs4.css') }}">
@@ -19,8 +19,10 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+    <script src="https://kit.fontawesome.com/2f708729c7.js" crossorigin="anonymous"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
