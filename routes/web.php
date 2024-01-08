@@ -12,6 +12,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PegawaiCutiController;
 use App\Http\Controllers\PegawaiGajiController;
 use App\Http\Controllers\PegawaiAbsenController;
+use App\Http\Controllers\PegawaiProfileController;
 use App\Http\Controllers\PegawaiFeedbackController;
 
 /*
@@ -43,11 +44,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/admin', [AdminController::class, 'index']);
 
 
-Route::get('/profile', function () {
-    return view('admin.profile.index',[
-        "title"=>"Admin"
-    ]);
-});
+
 
 Route::resource('/pegawai',PegawaiController::class);
 Route::resource('/absensi',AbsensiController::class);
@@ -56,6 +53,7 @@ Route::resource('/gaji',GajiController::class);
 Route::resource('/feedback',FeedbackController::class);
 Route::resource('/cuti',CutiController::class);
 
+// End Admin
 
 
 // Pegawai
@@ -93,16 +91,7 @@ Route::get('/pegawai/gaji/slipgajipegawaipdf/{id}', [PegawaiGajiController::clas
 
 
 
-
-
-
-
-
-
-
-// End Admin
-
-// Pegawai
+// End Pegawai
 
 
 
