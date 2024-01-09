@@ -27,7 +27,9 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             if(auth()->user()->role=='admin'){
-                return redirect('/admin');
+               
+                return redirect('/admin')->with('message','Anda Berhasil Login');
+                
             }
             return redirect('/pegawai_home');
         }

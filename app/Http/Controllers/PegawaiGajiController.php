@@ -18,6 +18,7 @@ class PegawaiGajiController extends Controller
         //
         $id_pegawai = auth()->user()->id;
         $gaji = Gaji::where('id_pegawai', $id_pegawai)->get();
+        $user = User::latest()->get();
         return view(
             'pegawai.gaji.index',
             compact(['gaji']),

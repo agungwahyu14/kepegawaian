@@ -18,6 +18,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Pegawai ID</th>
+                                        <th>Name</th>
                                         <th>Gaji Pokok</th>
                                         <th>Tunjangan Tetap</th>
                                         <th>Tunjangan Transportasi</th>
@@ -31,6 +32,7 @@
                                         <tr class="p-0 text-center">
                                             <td><?= $i ?></td>
                                             <td>{{ $data->id_pegawai }}</td>
+                                            <td>{{ auth()->user()->name }}</td>
                                             <td>{{ $data->gaji_pokok }}</td>
                                             <td>{{ $data->tunjangan_tetap }}</td>
                                             <td>{{ $data->tunjangan_transportasi }}</td>
