@@ -19,9 +19,7 @@
                         </div>
                         <div>
                             <a href="{{ route('absensi.create') }}"
-                                class="btn btn-lg ml-4 mb-2 mt-2 btn-success">[+]Create</a> |
-
-                            <a href="/admin/absen/cetakabsensipdf" class="btn btn-lg  mb-2 mt-2 btn-primary">Cetak</a>
+                                class="btn btn-lg ml-4 mb-2 mt-2 btn-success">[+]Create</a>
                         </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">

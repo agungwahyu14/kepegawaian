@@ -74,14 +74,34 @@ class GajiController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::latest()->get();
+        $gaji = Gaji::where('id', $id)->first();
+        return view('admin.gaji.update', compact('gaji','user'), ["title" => "Admin"]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Gaji $gaji)
     {
-        //
+        $request->validate([
+            'gaji_pokok' => 'required',
+            'tunjangan_tetap' => 'required',
+            'tunjangan_transportasi' => 'required',
+            'total' => 'required',
+        ]);
+
+        
+        $gaji->where('id',$request->id)->update([
+            'id_pegawai' => $request->id_pegawai,
+            'gaji_pokok' => $request->gaji_pokok,
+            'tunjangan_tetap' => $request->tunjangan_tetap,
+            'tunjangan_transportasi' => $request->tunjangan_transportasi,
+            'total' => $request->total,
+            
+        ]);
+
+        return redirect('/gaji')->with('success', 'Absen has been edited');
     }
 
     /**
