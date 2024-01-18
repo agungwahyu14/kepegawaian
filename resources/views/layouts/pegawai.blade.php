@@ -65,12 +65,12 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
 
-                         
+
                             <form action="/logout" method="POST">
                                 @csrf
-                                    <button class="dropdown-item has-icon text-danger" type="submit">
-                                        Logout
-                                    </button>
+                                <button class="dropdown-item has-icon text-danger" type="submit">
+                                    Logout
+                                </button>
                             </form>
                         </div>
                     </li>
@@ -124,6 +124,13 @@
 
         </div>
     </div>
+
+    @if (session('message'))
+        <script>
+            alert("{{ session('message') }}");
+        </script>
+    @endif
+
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>

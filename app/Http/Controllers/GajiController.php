@@ -13,9 +13,11 @@ class GajiController extends Controller
      */
     public function index()
     {
-        return view('admin.gaji.index',
-            ['gaji'=>Gaji::latest()->get(),
-            "title" => "Admin"
+        return view(
+            'admin.gaji.index',
+            [
+                'gaji' => Gaji::latest()->get(),
+                "title" => "Admin"
             ]
         );
     }
@@ -76,7 +78,7 @@ class GajiController extends Controller
         //
         $user = User::latest()->get();
         $gaji = Gaji::where('id', $id)->first();
-        return view('admin.gaji.update', compact('gaji','user'), ["title" => "Admin"]);
+        return view('admin.gaji.update', compact('gaji', 'user'), ["title" => "Admin"]);
     }
 
     /**
@@ -91,17 +93,17 @@ class GajiController extends Controller
             'total' => 'required',
         ]);
 
-        
-        $gaji->where('id',$request->id)->update([
+
+        $gaji->where('id', $request->id)->update([
             'id_pegawai' => $request->id_pegawai,
             'gaji_pokok' => $request->gaji_pokok,
             'tunjangan_tetap' => $request->tunjangan_tetap,
             'tunjangan_transportasi' => $request->tunjangan_transportasi,
             'total' => $request->total,
-            
+
         ]);
 
-        return redirect('/gaji')->with('success', 'Absen has been edited');
+        return redirect('/gaji')->with('success', 'Gaji has been edited');
     }
 
     /**

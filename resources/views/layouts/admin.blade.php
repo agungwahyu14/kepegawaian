@@ -19,7 +19,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
-    
+
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script src="https://kit.fontawesome.com/2f708729c7.js" crossorigin="anonymous"></script>
@@ -56,6 +56,7 @@
                         <div class="search-backdrop"></div>
                     </div>
 
+
                 </form>
                 <ul class="navbar-nav navbar-right">
 
@@ -67,7 +68,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
 
-                        
+
                             <form action="/logout" method="POST">
                                 @csrf
                                 <div>
@@ -128,6 +129,12 @@
 
         </div>
     </div>
+
+    @if (session('message'))
+        <script>
+            alert("{{ session('message') }}");
+        </script>
+    @endif
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>

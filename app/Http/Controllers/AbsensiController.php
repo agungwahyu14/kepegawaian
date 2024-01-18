@@ -21,14 +21,14 @@ class AbsensiController extends Controller
         );
     }
 
-    public function cetakAbsensipdf(){      
+    // public function cetakAbsensipdf(){      
         
-        $absensi = Absensi::latest()->get();
-        $user = User::latest()->get();
+    //     $absensi = Absensi::latest()->get();
+    //     $user = User::latest()->get();
         
-        $pdf = PDF::loadview('admin.absen.cetakAbsensiPdf',['absen'=>$absensi,'user'=>$user]);
-        return $pdf->download('laporan-cetak-absen-pegawai.pdf'); 
-    }
+    //     $pdf = PDF::loadview('admin.absen.cetakAbsensiPdf',['absen'=>$absensi,'user'=>$user]);
+    //     return $pdf->download('laporan-cetak-absen-pegawai.pdf'); 
+    // }
 
     
     public function create()

@@ -10,7 +10,7 @@
 
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <h3 class="text-white">Create Gaji</h3>
+                            <h3 class="text-white">Update Gaji</h3>
                         </div>
                         <div class="col-12 mt-4">
                             <form action="{{ route('gaji.update', $gaji->id) }}" method="POST"

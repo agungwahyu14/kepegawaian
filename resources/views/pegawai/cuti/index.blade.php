@@ -24,7 +24,7 @@
                                         <label>Pegawai ID</label>
                                         <select class="form-control" name="id_pegawai">
                                             <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
-                                        </select>
+                                    </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal</label>

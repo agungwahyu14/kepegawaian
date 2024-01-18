@@ -23,18 +23,17 @@ class LoginController extends Controller
             'email' => ['required', 'email:dns'],
             'password' => ['required']
         ]);
- 
-        if(Auth::attempt($credentials)){
+
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            if(auth()->user()->role=='admin'){
-               
-                return redirect('/admin')->with('message','Anda Berhasil Login');
-                
+            if (auth()->user()->role == 'admin') {
+
+                return redirect('/admin')->with('message', 'Anda Berhasil Login Sebagai Admin');
             }
-            return redirect('/pegawai_home');
+            return redirect('/pegawai_home')->with('message', 'Anda Berhasil Login Sebagai Pegawai');
         }
- 
-        return back()->with('loginError', 'Login failed');
+
+        return back()->with('message', 'Anda Gagal Login');
     }
 
     public function logout(Request $request)
@@ -44,6 +43,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-        return redirect('/')->with('message','Anda Berhasil Logout');
+        return redirect('/');
     }
 }
