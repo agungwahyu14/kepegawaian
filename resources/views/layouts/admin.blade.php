@@ -67,7 +67,9 @@
                             <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }} </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-
+                            <a href="{{ route('profile') }}" class="dropdown-item has-icon">
+                                Profile
+                            </a>
 
                             <form action="/logout" method="POST">
                                 @csrf
@@ -77,6 +79,7 @@
                                     </button>
                                 </div>
                             </form>
+
                         </div>
                     </li>
                 </ul>
@@ -135,6 +138,8 @@
             alert("{{ session('message') }}");
         </script>
     @endif
+
+
 
     <!-- General JS Scripts -->
     <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>

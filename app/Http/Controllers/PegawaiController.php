@@ -114,7 +114,7 @@ class PegawaiController extends Controller
             'umur' => $request->umur,
         ]);
 
-        return redirect('/pegawai')->with('success', 'Pegawai has been edited');
+        return redirect('/pegawai')->with('warning', 'Pegawai has been edited');
     }
     /**
      * Remove the specified resource from storage.

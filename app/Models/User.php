@@ -29,7 +29,8 @@ class User extends Authenticatable
         'telepon',
         'gender',
         'role',
-        'umur'
+        'umur',
+        'profile_picture'
     ];
 
     public function gaji() {

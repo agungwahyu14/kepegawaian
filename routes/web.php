@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CutiController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
@@ -42,6 +43,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Admin
 
 Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
 
 
 
@@ -87,6 +90,7 @@ Route::post('/pegawai_absen', [PegawaiAbsenController::class, 'store']);
 // Gaji
 Route::get('/pegawai_gaji', [PegawaiGajiController::class, 'index']);
 Route::get('/pegawai/gaji/slipgajipegawaipdf/{id}', [PegawaiGajiController::class, 'slipgajipegawaipdf']);
+Route::get('/pegawai_gaji', [PegawaiGajiController::class, 'index']);
 
 
 

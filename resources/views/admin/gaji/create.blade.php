@@ -29,34 +29,65 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Gaji Pokok</label>
-                                        <input type="text" name="gaji_pokok" class="form-control" required="">
+                                        <input type="number" id="gaji_pokok" name="gaji_pokok" class="form-control"
+                                            required>
                                     </div>
+
                                     <div class="form-group">
                                         <label>Tunjangan Tetap</label>
-                                        <input type="text" name="tunjangan_tetap" class="form-control" required="">
+                                        <input type="number" id="tunjangan_tetap" name="tunjangan_tetap"
+                                            class="form-control" required>
                                     </div>
+
                                     <div class="form-group">
                                         <label>Tunjangan Transportasi</label>
-                                        <input type="text" name="tunjangan_transportasi" class="form-control"required="">
+                                        <input type="number" id="tunjangan_transportasi" name="tunjangan_transportasi"
+                                            class="form-control" required>
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Total </label>
-                                        <input type="text" name="total" class="form-control" required="">
+                                        <label>Total</label>
+                                        <input type="number" id="total" name="total" class="form-control" readonly>
                                     </div>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function() {
+                                            // Ambil elemen input
+                                            const gajiPokok = document.getElementById('gaji_pokok');
+                                            const tunjanganTetap = document.getElementById('tunjangan_tetap');
+                                            const tunjanganTransportasi = document.getElementById('tunjangan_transportasi');
+                                            const total = document.getElementById('total');
+
+                                            function hitungTotal() {
+                                                // Ambil nilai input, jika kosong set ke 0
+                                                let gaji = parseFloat(gajiPokok.value) || 0;
+                                                let tunjangan1 = parseFloat(tunjanganTetap.value) || 0;
+                                                let tunjangan2 = parseFloat(tunjanganTransportasi.value) || 0;
+
+                                                // Hitung total
+                                                total.value = gaji + tunjangan1 + tunjangan2;
+                                            }
+
+                                            // Tambahkan event listener untuk setiap input
+                                            [gajiPokok, tunjanganTetap, tunjanganTransportasi].forEach(input => {
+                                                input.addEventListener('input', hitungTotal);
+                                            });
+                                        });
+                                    </script>
 
                                 </div>
                                 <div>
                                     <a href="/gaji" class="btn btn-danger mt-3 mb-3 text-white">Batal</a>
                                     <button type="submit" class="btn btn-primary mt-3 mb-3">Submit</button>
+                                </div>
+                            </form>
+
                         </div>
-                        </form>
+
 
                     </div>
-
-
                 </div>
             </div>
-    </div>
-    </section>
+        </section>
     </div>
 @endsection

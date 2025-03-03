@@ -16,14 +16,20 @@ class PegawaiGajiController extends Controller
     public function index()
     {
         //
+        // Ambil ID pegawai yang sedang login
         $id_pegawai = auth()->user()->id;
+        // Ambil data gaji untuk pegawai yang login
         $gaji = Gaji::where('id_pegawai', $id_pegawai)->get();
-        $user = User::latest()->get();
+        // Ambil admin pertama dari database
+        $admin = User::where('role', 'admin')->first();
+
         return view(
             'pegawai.gaji.index',
-            compact(['gaji']),
+            compact('gaji'),
             [
-                "title" => "Pegawai"
+                'title' => 'Pegawai',
+                'user' => auth()->user(), // Data pengguna yang login
+                'admin_name' => $admin ? $admin->name : 'Nama Admin Tidak Tersedia' // Nama admin
             ]
         );
     }
@@ -35,10 +41,16 @@ class PegawaiGajiController extends Controller
         $user = User::where('id', $gaji->id_pegawai)->get();
 
 
+        $admin = User::where('role', 'admin')->first();
+        $admin_name = $admin ? $admin->name : 'Nama Admin Tidak Tersedia';
+    
+        // Load view dengan data tambahan
+        $pdf = Pdf::loadView('pegawai.gaji.slipGajiPdf', [
+            'gaji' => $gaji,
+            'user' => $user,
+            'admin_name' => $admin_name, // Kirim admin_name ke view
+        ]);
 
-
-
-        $pdf = Pdf::loadView('pegawai.gaji.slipGajiPdf', ['gaji' => $gaji, 'user' => $user]);
         return $pdf->download('laporan-slip-gaji-pegawai.pdf');
     }
     /**
